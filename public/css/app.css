@@ -1,0 +1,152 @@
+@import './global.css';
+
+
+#app{
+  height: 100vh;
+
+  /* display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-areas: 'AS CT'; */
+}
+
+#app > aside{
+  min-width: 270px;
+  max-width: 270px;
+
+  background: var(--baseColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative; 
+}
+
+
+#app > .active{
+  margin-left: -270px; 
+}
+
+#app > .active .custom-menu {
+  margin-right: -50px; 
+}
+
+@media (max-width: 991.98px) {
+  #app  {
+    margin-left: -270px; }
+  #app .active {
+    margin-left: 270px;
+    height: 100vh;
+    position: absolute;
+    z-index: 99;
+    box-shadow: 20px 0px 20px 100rem #00000052;
+  }
+  #app  .custom-menu {
+    margin-right: -60px !important;
+    top: 10px !important; 
+  } 
+}
+  #app  .custom-menu {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    margin-right: -20px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    z-index: 99;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #app  .custom-menu {
+      -webkit-transition: none;
+      -o-transition: none;
+      transition: none; } }
+  #app  .custom-menu .btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; }
+    #app  .custom-menu .btn.btn-primary {
+      background: var(--baseColor);
+      border-color: var(--baseColor); }
+      #app  .custom-menu .btn.btn-primary:hover, #app  .custom-menu .btn.btn-primary:focus {
+        background: var(--baseColor) !important;
+        border-color: var(--baseColor) !important; }
+
+aside .user-info, .user-menu{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  color: var(--backgroundColor);
+}
+
+.user-info .user-img{
+  width: 80px;
+  height: 80px;
+
+  overflow: hidden;
+  position: relative;
+
+  border-radius: 100%;
+}
+
+
+.user-img > img{
+  width: auto;
+  height: 100%;
+  
+  position: absolute;
+  right: -30%;
+
+  background: var(--textColorTertiary);
+}
+
+.user-info > small{
+  
+  color: var(--backgroundColor);
+
+  font: 400 1rem 'Poppins';
+
+}
+.user-menu{
+  align-items: start;
+  padding: 0 3rem;
+}
+
+.user-menu input{
+  display: none;
+}
+
+.user-menu > a{
+  display: block;
+  font: 500 1.5rem 'Poppins';
+  color: var(--darkGreen);
+  text-decoration: none;
+
+  cursor: pointer;
+}
+
+.user-menu input[type="radio"]:checked+a{
+  color: var(--backgroundColor);
+}
+
+.user-menu input[type="radio"]:checked+a::after{
+  content: '';
+  height: 13vh;
+  border-left: 1px solid var(--backgroundColor);
+  display: block;
+  margin: auto 0.2rem;
+}
+
+
+#app > main{
+  height: 100vh;
+  width: 100%;
+  
+  overflow-y: scroll;
+  padding: 1.5rem;
+
+}

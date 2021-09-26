@@ -1,0 +1,185 @@
+@import '../global.css';
+
+
+#appStudent{
+  height: 100vh;
+  flex-direction: column;
+}
+
+#appStudent > aside{
+  min-height: 80px;
+  max-height: 80px;
+
+  background: var(--baseColor);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  -webkit-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+  position: relative; 
+}
+
+
+@media (max-width: 991.98px) {
+  #appStudent  {
+    margin-left: 0px; 
+  }
+  #appStudent  .custom-menu {
+    margin-right: -60px !important;
+    top: 10px !important; 
+  } 
+}
+
+  #appStudent  .custom-menu {
+    display: inline-block;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    margin-right: -20px;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    z-index: 99;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #appStudent  .custom-menu {
+      -webkit-transition: none;
+      -o-transition: none;
+      transition: none; } }
+  #appStudent  .custom-menu .btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%; 
+  }
+  #appStudent  .custom-menu .btn.btn-primary {
+    background: var(--baseColor);
+    border-color: var(--baseColor); 
+  }
+  #appStudent  .custom-menu .btn.btn-primary:hover, #appStudent  .custom-menu .btn.btn-primary:focus {
+    background: var(--baseColor) !important;
+    border-color: var(--baseColor) !important; 
+  }
+
+.logo{
+  font: 400 1.5rem 'Poppins';
+  color: var(--backgroundColor);
+}
+
+aside > .user-info, .user-menu{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+  color: var(--backgroundColor);
+}
+
+
+.user-info .user-img{
+  width: 70px;
+  height: 70px;
+
+  overflow: hidden;
+  position: relative;
+
+  border-radius: 100%;
+  margin: 0 0.5rem;
+}
+
+
+.user-img > img{
+  width: auto;
+  height: 100%;
+  
+  position: absolute;
+  right: -30%;
+
+  background: var(--textColorTertiary);
+}
+.dropdown{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+}
+
+.dropdown a, .dropdown p{
+  text-decoration: none;
+  color: var(--backgroundColor);
+
+  padding: 0 .5rem;
+}
+.dropdown p{
+  padding: 0 1.5rem;
+  margin-bottom: 0rem;
+}
+
+#appStudent > main{
+  height: 100vh;
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  overflow-y: scroll;
+  padding: 1.5rem;
+}
+
+main > .product-options{
+  display: flex;
+  justify-content: space-evenly;
+  
+  width: 50%;
+
+  padding: 0.5rem;
+}
+
+.product-options .option-btn{
+  display: flex;
+  align-items: baseline;
+}
+
+.option-btn > input[type ='radio']{
+  display: none;
+}
+
+.option-btn > label{
+  padding: 0.5rem 1rem;
+
+  border-radius: 8px;
+
+  color: var(--white);
+  background: var(--darkGreen);
+  box-shadow: 4px 4px 13px 3px rgb(0 0 0 .14);
+  
+  cursor: pointer;
+}
+
+.option-btn > input:checked + label{
+  color: var(--white);
+  background: var(--baseColor);
+}
+
+@media (max-width: 991.98px) {
+  main > .product-options{
+    display: flex;
+    justify-content: space-evenly;
+    
+    width: 100%;
+  
+    padding: 0.5rem;
+  }
+}
+
+.date-filter-deposit{
+  min-height: 100px;
+}
+
+.date-filter-deposit form{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}

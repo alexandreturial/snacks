@@ -1,0 +1,52 @@
+<svg width="567" height="512" viewBox="0 0 567 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle 
+  cx="124" 
+  cy="46" 
+  r="46" 
+  fill="#7ED161" 
+  fill-opacity="0.5" 
+  style="animation:a 4.5s infinite"
+/>
+<style>@keyframes a {0%,to{transform-origin: 124px 46px;transform:scale(.2)}50%{transform:scale(1)}}</style>
+  
+<circle 
+  cx="124" 
+  cy="466" 
+  r="46" 
+  fill="#7ED161" 
+  fill-opacity="0.5"
+  style="animation:b 4.5s infinite"
+/>
+<style>@keyframes b {0%,to{transform-origin: 124px 466px;transform:scale(1)}50%{transform:scale(.2)}}</style>
+
+<circle 
+  cx="521" 
+  cy="466" 
+  r="46" 
+  fill="#7ED161" 
+  fill-opacity="0.5"
+  style="animation:c 4.5s infinite"
+/>
+<style>@keyframes c {0%,to{transform-origin: 521px 466px;transform:scale(.2)}50%{transform:scale(1)}}</style>
+
+<circle 
+  cx="30" 
+  cy="109" 
+  r="30" 
+  fill="#7ED161" 
+  fill-opacity="0.5"
+  style="animation:d 4.5s infinite"
+/>
+<style>@keyframes d {0%,to{transform-origin: 30px 109px;transform:scale(1)}50%{transform:scale(.2)}}</style>
+
+<circle 
+  cx="30" 
+  cy="390" 
+  r="30" 
+  fill="#7ED161" 
+  fill-opacity="0.5"
+  style="animation:e 4.5s infinite"
+/>
+<style>@keyframes e {0%,to{transform-origin: 30px 390px;transform:scale(.2)}50%{transform:scale(1)}}</style>
+
+</svg>

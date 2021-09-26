@@ -1,0 +1,83 @@
+@import './global.css';
+
+.card-detail{  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
+  
+}
+
+.card-detail h3{
+  font: 500 1.2rem 'Poppins';
+  line-height: 170%;
+
+  margin-bottom: -5px;
+
+  color: var(--darkGreen);
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+
+.box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.box .content-info{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.card-detail small, .ingredients-list > p{
+  font: 400 0.9rem 'Poppins';
+  line-height: 256.4%;
+
+  color: var(--textColorTertiary);
+}
+
+.card-detail > .detail-img{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.detail-img > .detail-title{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 250px;
+  overflow: auto;
+}
+
+.detail-img .img-product{
+  width: 100px;
+  height: 100px;
+
+  overflow: hidden;
+  position: relative;
+
+  box-shadow: 4px 4px 13px 3px rgba(0, 0, 0, 0.14);
+  border-radius: 100px;
+}
+
+.detail-img > img{
+  /* background: var(--textColorTertiary); */
+  width: 100px;
+  height: 100px;
+  position: absolute;
+
+  box-shadow: 4px 4px 13px 3px rgba(0, 0, 0, 0.14);
+  border-radius: 100px;
+}
+
+.ingredients-list{
+  overflow-y: auto;
+  height: 10rem;
+}

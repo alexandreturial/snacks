@@ -1,0 +1,110 @@
+@import '../global.css';
+
+.school-page{
+  display: flex;
+  flex-direction: column;
+}
+
+.school-page h3{
+  font: 600 3rem 'Poppins';
+  line-height: 93px;
+  letter-spacing: 0.03em;
+
+  text-align: center;
+}
+
+.profiles{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: #7ed16180;
+  
+  padding: 2rem 0;
+}
+
+
+.carousel-item {
+  width: 700px;;
+  height: 380px;
+
+  overflow: hidden;
+  position: relative;
+}
+.carousel-item img{
+  position: absolute;
+  filter: brightness(0.7);
+  padding: 5px;
+  width: 100%;
+  height: auto!important;
+  right: 0%;
+
+}
+
+.carousel-item .info-school{
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: var(--backgroundColor);
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.profiles .card-profile{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  background-color: var(--backgroundColor);
+   
+  padding: 2rem;
+
+  border-radius: 15px;
+  animation: fadeIn 2s;
+  opacity: 1;
+}
+
+.card-profile img{
+  width: 126px;
+  height: 126px;
+}
+
+.card-profile button{
+  padding: .3rem 1.3rem;
+  border-radius: 40px;
+
+  margin-top: 2.5rem;
+
+  font: 400 1rem 'Poppins';
+  color: var(--white); 
+  background-color: var(--secundaryColor);
+}

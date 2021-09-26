@@ -1,0 +1,70 @@
+@import '../global.css';
+
+
+/* ANIMAÇOES */
+@keyframes fadeInLeft{
+  0%{
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  50%{
+    opacity: 0.3;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInRight{
+  0%{
+    transform: translateX(-100px);
+    opacity: 0;
+  }
+  50%{
+    opacity: 0.3;
+  }
+  100%{
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes upDown{
+  0%{
+    transform: translateY(0px);
+  }
+  50%{
+    transform: translateY(20px);
+  }
+}
+
+
+@keyframes fadeIn{
+  0%{
+    opacity: 0;
+  }
+  50%{
+    opacity: 0.3;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+
+/******************************* HEADER ************************************/
+
+@import './header.css';
+
+/************************************** MAIN *******************************************/
+
+/*  HOME PAGE  */
+@import './home.css';
+
+/*  ABOUT PAGE  */
+@import './about.css';
+
+/******** PROFILE PAGE ************/
+
+@import './profile.css';

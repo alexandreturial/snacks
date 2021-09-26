@@ -1,0 +1,44 @@
+/******************************* HEADER ************************************/
+.navbar{
+  height: 45px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  padding: 0 3rem;
+}
+.navbar .contact > h4{
+ 
+  font: 400 1.5rem 'Poppins';
+  line-height: 36px;
+  cursor: pointer;
+}
+
+.contact > h4 > a{
+  color: var(--black);
+  text-decoration: none;
+}
+
+.navbar .contact h4:first-child{
+  margin-right: 15px;
+}
+
+.sigin-btns button:first-child{
+  margin-right: 15px;
+}
+
+.sigin-btns .primary{
+  padding: .3rem 1.3rem;
+  border-radius: 40px;
+
+  font: 400 1rem 'Poppins';
+  color: var(--white); 
+  background-color: var(--secundaryColor);
+}
+
+.sigin-btns .login{
+  font: 400 1rem 'Poppins';
+
+  color: var(--secundaryColor); 
+  background-color: var(--backgroundcolor);
+}

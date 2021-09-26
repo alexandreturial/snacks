@@ -1,0 +1,112 @@
+.consumption-page{
+  height: -webkit-fill-available;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+ 
+}
+.consumption-page > .list-consumption{
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding-top: 1rem;
+  padding-left: 1.5rem;
+
+  overflow-y: auto;
+}
+
+.card-consumption{
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+
+  width: 100%;
+  max-height: 250px;
+
+  padding: 1rem;
+  margin: .5rem 0;
+
+  border-left: 1px solid var(--textColorTertiary);
+  border-top: 1px solid var(--textColorTertiary);
+
+  background: var(--backgroundColor);
+
+}
+.consumption-page h4{
+  color: var(--darkGreen);
+}
+.consumption-page > div{
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  padding-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.consumption-page > div > form{
+  width: 100%;
+  
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+form div{
+  width: auto!important;
+}
+form input{
+}
+
+
+.card-consumption .consumption-icon{
+  position: absolute;
+  top: -20px;
+  left: -20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  color: var(--backgroundColor);
+  background: var(--darkGreen);
+  border-radius: 100%;
+
+  cursor: pointer;
+}
+
+.card-consumption > .list-consumption{
+  display: flex;
+  flex-direction: column;
+}
+.card-consumption > div{
+  flex-direction: column;
+
+}
+.card-consumption > .list-consumption > h4{
+  font: 500 1.5rem 'Poppins';
+  line-height: 170%;
+  letter-spacing: 0.09em;
+  color: var(--darkGreen);
+}
+
+
+.card-consumption > .list-consumption > small{
+  font: 400 1rem 'Poppins';
+
+  color: var(--textColorTertiary);
+}

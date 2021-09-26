@@ -1,0 +1,274 @@
+@import './global.css';
+
+.options {
+  align-items: baseline;
+  padding: 1.5rem 4rem;
+  gap: 2rem;
+}
+
+.options >.btn{
+  max-height: 34px;
+  min-width: 144px;
+  background: var(--darkGreen);
+  color: var(--backgroundColor);
+  border: none;
+}
+
+.cards{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+
+  max-width: 100%;
+}
+
+
+.card-product{
+  position: relative;
+   /* shadow_card */
+   border-radius: 15px;
+   border: none;
+}
+
+.card{
+  position: relative;
+   /* shadow_card */
+   border-radius: 15px;
+   width: 100%;
+   border: none;
+}
+
+.card > div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  /* max-width: 200px; */
+  max-height: 250px;
+
+  padding: 2rem;
+
+  background: var(--white);
+
+  /* shadow_card */
+  box-shadow: 4px 4px 13px 3px rgba(0, 0, 0, 0.14);
+  border-radius: 15px;
+  border: none;
+  
+  cursor: pointer;
+}
+
+.card-product > div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  min-width: 250px;
+  min-height: 260px;
+
+  max-width: 200px;
+  max-height: 250px;
+
+  padding: 2rem;
+
+  background: var(--white);
+
+  /* shadow_card */
+  box-shadow: 4px 4px 13px 3px rgba(0, 0, 0, 0.14);
+  border-radius: 15px;
+  border: none;
+  
+  cursor: pointer;
+}
+
+
+
+.card > .content-user{
+  max-width: 100%;
+}
+
+.card #produto-image{
+  width: 100px;
+  height: 100px;
+
+  background: gray;
+
+  box-shadow: 4px 4px 13px 3px rgba(0, 0, 0, 0.14);
+  border-radius: 100px;
+}
+
+.card-product .img-product{
+  width: 100px;
+  height: 100px;
+
+  overflow: hidden;
+  position: relative;
+
+  box-shadow: 4px 4px 13px 3px rgba(0, 0, 0, 0.14);
+  border-radius: 100px;
+}
+
+.card-product #produto-image{
+  position: absolute;
+  
+  height: 100%;
+  width: auto;
+}
+
+
+.card-product .locked{
+  position: absolute;
+  top: -20px;
+  left: calc(100% - 30px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 51px;
+  height: 51px;
+
+  background: var(--alertColor);
+  border-radius: 100%;
+
+  cursor: pointer;
+}
+
+.card-product .unlocked{
+  position: absolute;
+  top: -20px;
+  left: calc(100% - 30px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 51px;
+  height: 51px;
+
+  background: var(--baseColor);
+  border-radius: 100%;
+
+  cursor: pointer;
+}
+
+.locked  > img, .unlocked > img{
+  width: 1.9rem;
+  height: 1.9rem;
+}
+
+.card .buy{
+  position: absolute;
+  top: calc(100% - 35px);
+  left: calc(50% - 23px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 51px;
+  height: 51px;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.card > div > h4{
+  font: 500 1.5rem 'Poppins';
+  text-align: center;
+ 
+  color: var(--darkGreen);
+}
+
+
+.card >  small{
+  font: 400 1rem 'Poppins';
+
+  color: var(--textColorTertiary);
+}
+
+.card-product > div > h4{
+  text-align: center;
+
+  color: var(--darkGreen);
+}
+
+
+.card-product >  small{
+  font: 400 1rem 'Poppins';
+
+  color: var(--textColorTertiary);
+}
+
+.btn-secondary{
+  background-color: var(--alertColor);
+  border: none;
+}
+
+.btn-secondary:hover{
+  background-color: var(--alertColor);
+  filter: brightness(90%);
+  border: none;
+}
+
+.btn-primary{
+  background-color: var(--baseColor);
+  border: none;
+}
+
+.btn-primary:hover{
+  filter: brightness(90%);
+  background-color: var(--baseColor);
+  border: none;
+}
+
+@media (max-width: 991.98px) {
+  .cards{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+  
+    max-width: 100%;
+  }
+  .card .locked{
+    position: absolute;
+    top: -0.5rem;
+    left: calc(100% - 2.3rem);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    width: 41px;
+    height: 41px;
+  
+    background: var(--alertColor);
+    border-radius: 100%;
+  
+    cursor: pointer;
+  }
+  
+  .card .unlocked{
+    position: absolute;
+    top: -0.5rem;
+    left: calc(100% - 2.3rem);
+  
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    width: 41px;
+    height: 41px;
+  
+    background: var(--baseColor);
+    border-radius: 100%;
+  
+    cursor: pointer;
+  }
+
+  .locked > img, .unlocked > img{
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+}

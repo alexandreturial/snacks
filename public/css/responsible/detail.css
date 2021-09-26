@@ -1,0 +1,19 @@
+.student-name{
+  width: 100%;
+  justify-content: space-evenly;
+}
+
+.info-student{
+  justify-content: space-evenly;
+  padding: 1rem 0;
+}
+
+.info-student .box-info{
+  flex-direction: column;
+}
+.box-info small{
+  font: 400 1rem 'Poppins';
+}
+.option-student{
+  justify-content: center;
+}

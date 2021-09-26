@@ -1,0 +1,14 @@
+.block-food .modal-body form{
+  list-style:none;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
+}
+
+.modal-body form .check-son{
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}

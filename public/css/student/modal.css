@@ -143,6 +143,9 @@
 .footer-modal .buy{
   background-color: var(--baseColor);
 }
+.footer-modal .disable{
+  display: none;
+}
 
 .footer-modal .cancel{
   background-color: var(--alertColor);

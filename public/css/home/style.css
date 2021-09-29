@@ -38,6 +38,9 @@
    width: 100%;
    border: none;
 }
+.not-click{
+  cursor: auto!important;
+}
 
 .card > div{
   display: flex;

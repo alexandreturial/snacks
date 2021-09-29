@@ -2,6 +2,7 @@
 // let elemento = document.querySelector('#add');
 // let elemento = document.querySelector('#less');
 
+
 function add(id){
   let elemento = document.getElementById("quantity"+id);
   let contador = parseFloat(elemento.textContent, 10);
@@ -17,6 +18,7 @@ function less(id){
     elemento.textContent = contador;
   }else{
     remove(id);
+    
   }
  
 }
@@ -32,16 +34,32 @@ function total(preco){
   val = el.textContent.replace('Total: R$', '');
   val = val.replace(',', '.');
   val = parseFloat(val);
-  newValue = val +preco;
+  newValue = val + preco;
+  
   if(newValue >= 0){
     val += preco;
   }
-
+  if(val <= 0){
+    isEmpty();
+  }
   val = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
 
   el.textContent = 'Total: ' + val;
 }
 
+
+function isEmpty(){
+  let carrinho = document.getElementById("carrinho");
+  var text = document.createElement("h3");
+  text.id = "empty-cart";
+  var title = document.createTextNode("Carrinho Vazio");
+
+  text.appendChild(title);
+  carrinho.appendChild(text);
+
+  let btnBuy = document.getElementById("buy-btn");
+  btnBuy.classList.add('disable');
+}
 
 function newElement(nome, valor, id) {
   let carrinho = document.getElementById("carrinho");
@@ -54,8 +72,6 @@ function newElement(nome, valor, id) {
   var iconFood = document.createElement("i");
   iconFood.classList.add('fa');
   iconFood.classList.add('fa-cutlery');
-  
-
 
   var contentDiv = document.createElement("div");
   var titleDiv = document.createElement("h4");
@@ -125,7 +141,6 @@ function newElement(nome, valor, id) {
   handleQuantityDiv.appendChild(addIcon);
   addIcon.appendChild(iconAdd);
  
-
   removeDiv.appendChild(removeIcon); 
   removeIcon.appendChild(iconRemove);
 
@@ -134,4 +149,10 @@ function newElement(nome, valor, id) {
   total(valor);
 
   alert("Produto adicionado com sucesso!");
+
+  let btnBuy = document.getElementById("buy-btn");
+  btnBuy.classList.remove('disable');
+
+  var el = document.getElementById("empty-cart");
+  el.remove();
 } 

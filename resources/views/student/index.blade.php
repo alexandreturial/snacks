@@ -23,7 +23,16 @@
 <div class="cards active" id="food">
  {{-- @for($i=0; $i < 5; $i++) --}}
   <div class="card" >
-    <div data-toggle="modal" data-target="#detailProduct">
+    <div data-toggle="modal" data-target="#detailProduct"
+      onclick="loadvalues(
+        'Pão com ovo', 
+        'Cod.: 1561561', 
+        '/images/food3.png', 
+        'Comida', 
+        'Este produto contém 4 ovos (ovos orgânicos ou caipiras), 2 colheres de sopa de vinagre de vinho branco, 2 english muffins cortados ao meio ou fatias de pão de forma branco sem casca, Um pouco de manteiga, 8 fatias de presunto, bacon ou salmão fumado e, cebolinha picada para finalizar', 
+        'R$ 4,00'
+      )"
+    >
       <div class="img-product">
         <img id="produto-image" src="{{ asset('images/food3.png') }}" alt="Produto">
       </div>
@@ -35,7 +44,16 @@
     </span>
   </div>
   <div class="card" >
-    <div data-toggle="modal" data-target="#detailProduct">
+    <div data-toggle="modal" data-target="#detailProduct"
+      onclick="loadvalues(
+        'Rosquinhas', 
+        'Cod.: 1558525', 
+        '/images/rosquinhas.jpg', 
+        'Comida', 
+        '4 xícaras farinha de trigo ou até o ponto, 1 xícara de açúcar refinado, 1/2 xícara de óleo, 1/2 xícara de leite, 2 ovos, 1 colher (sopa) de fermento em pó, 1 pitada de sal canela em pó', 
+        'R$ 2,50'
+      )"
+    >
       <div class="img-product">
         <img id="produto-image" src="{{ asset('images/rosquinhas.jpg') }}" alt="Produto">
       </div>
@@ -47,7 +65,16 @@
     </span>
   </div>
   <div class="card" >
-    <div data-toggle="modal" data-target="#detailProduct">
+    <div data-toggle="modal" data-target="#detailProduct"
+      onclick="loadvalues(
+        'Panquecas', 
+        'Cod.: 1514227', 
+        '/images/panquecas.jpg', 
+        'Comida', 
+        '2 xícaras (chá) de farinha de trigo, 2 xícaras (chá) de leite, 3 ovos, 1 pitada de sal', 
+        'R$ 5,00'
+      )"
+    >
       <div class="img-product">
         <img id="produto-image" src="{{ asset('images/panquecas.jpg') }}" alt="Produto">
       </div>
@@ -59,7 +86,16 @@
     </span>
   </div>
   <div class="card" >
-    <div data-toggle="modal" data-target="#detailProduct">
+    <div data-toggle="modal" data-target="#detailProduct"
+      onclick="loadvalues(
+        'Cupcake', 
+        'Cod.: 1118247', 
+        '/images/cupcake.jpg', 
+        'Comida', 
+        '3 gemas, 2 xícaras de açúcar, 1 colher de sopa de essência de baunilha, 250 ml de leite, 1 xícara de óleo, 3 claras em neve, 3 e 1/2 xícaras de farinha de trigo, 1 colher (sopa) de fermento, Recheio e cobertura de doce de leite', 
+        'R$ 3,50'
+      )"
+    >
       <div class="img-product">
         <img id="produto-image" src="{{ asset('images/cupcake.jpg') }}" alt="Produto">
       </div>
@@ -71,7 +107,16 @@
     </span>
   </div>
   <div class="card" >
-    <div data-toggle="modal" data-target="#detailProduct">
+    <div data-toggle="modal" data-target="#detailProduct"
+      onclick="loadvalues(
+        'Sorvete', 
+        'Cod.: 12358478', 
+        '/images/food2.png', 
+        'Comida', 
+        '500 ml de leite integral (leite de vaca), 1 caixa de creme de leite, 1/2 lata de leite condensado, 10 colheres de sopa de açúcar, 1 e 1/2 colher de sopa de pó para sorvete com sabor de sua preferência, 1 colher de sopa bem cheia de liga neutra, 1 colher de chá de emulsificante', 
+        'R$ 2,50'
+      )"
+    >
       <div class="img-product">
         <img id="produto-image" src="{{ asset('images/food2.png') }}" alt="Produto">
       </div>
@@ -88,7 +133,16 @@
 <div class="cards" id="drink">
   {{-- @for($i=0; $i < 5; $i++) --}}
    <div class="card" >
-     <div data-toggle="modal" data-target="#detailDrink">
+     <div data-toggle="modal" data-target="#detailProduct"
+      onclick="loadvalues(
+        'Cerveja Amanteigada', 
+        'Cod.: 4512354', 
+        '/images/buterbeer.jpg', 
+        'Bebida', 
+        'O Cadeirão Furado', 
+        'R$ 5,00'
+      )"
+     >
        <div class="img-product">
          <img id="produto-image" src="{{ asset('images/buterbeer.jpg') }}" alt="Produto">
        </div>
@@ -100,7 +154,16 @@
     </span>
    </div>
    <div class="card" >
-    <div data-toggle="modal" data-target="#detailDrink">
+    <div data-toggle="modal" data-target="#detailProduct"
+      onclick="loadvalues(
+        'Milkshake', 
+        'Cod.: 45813579', 
+        '/images/coke.jpg', 
+        'Bebida', 
+        'Boobs', 
+        'R$ 10,00'
+      )"
+    >
       <div class="img-product">
         <img id="produto-image" src="{{ asset('images/milkshake.jpg') }}" alt="Produto">
       </div>
@@ -112,7 +175,16 @@
     </span>
   </div>
   <div class="card" >
-    <div data-toggle="modal" data-target="#detailDrink">
+    <div data-toggle="modal" data-target="#detailProduct"
+      onclick="loadvalues(
+        'Coca-cola', 
+        'Cod.: 7845164', 
+        '/images/coke.jpg', 
+        'Bebida', 
+        'Coca-Cola Comapany', 
+        'R$ 1,99'
+      )"
+    >
       <div class="img-product">
         <img id="produto-image" src="{{ asset('images/coke.jpg') }}" alt="Produto">
       </div>
@@ -136,28 +208,22 @@
       <div class="modal-body card-detail">
         <div class="detail-img">
           <div class="detail-title">
-            <h3>Pão com ovo</h3>
-            <small>Cod.: 1561561</small>
+            <h3 id="name"></h3>
+            <small id="code">Cod.: </small>
           </div>
           <div class="img-product">
-            <img id="produto-image" src="{{ asset('images/food3.png') }}" alt="Produto">
+            <img id="produto-image-detail" src="" alt="Produto">
           </div>
         </div>
         <h3>Tipo</h3>
-        <small>Comida</small>
-          <h3>Ingredientes</h3>
+        <small id="type"></small>
+          <h3 id="description-type">Ingredientes</h3>
           <div class="ingredients-list">
-           <p>
-            Este produto contém 4 ovos (ovos orgânicos ou caipiras),
-            2 colheres de sopa de vinagre de vinho branco,
-            2 english muffins cortados ao meio ou fatias de pão de forma branco sem casca
-            Um pouco de manteiga,
-            8 fatias de presunto, bacon ou salmão fumado e
-            cebolinha picada para finalizar
+           <p id="description">
            </p>
           </div>
           <h3>Preço</h3>
-          <small>R$ 4,00</small>
+          <small id="price"></small>
       </div>
     </div>
   </div>
@@ -207,34 +273,17 @@
         <h4 id="totalcarrinho">Total: R$ 00,00</h4>
       </div>
       <div class="body-modal" id="carrinho">
-        {{-- @for($i=0; $i < 3; $i++)
-          <div class="card-consumption">
-            <span class="consumption-icon">
-              <i class="fa fa-cutlery"></i>
-            </span>
-            <div>
-              <h4>Lanche</h4>
-              <small> R$ 60,00</small>
-            </div>
-            <div class="quantity-menu">
-              <span onclick="less({{$i}})"><i class="fa fa-minus"></i></span>
-              <small id="quantity{{$i}}">1</small>
-              <span onclick="add({{$i}})"><i class="fa fa-plus"></i></span>
-            </div>
-            <div class="quantity-menu">
-              <span ><i class="fa fa-trash"></i></span>
-            </div>
-          </div>
-        @endfor    --}}
+        <h3 id="empty-cart">Carrinho Vazio</h3>
       </div> 
       <div class="footer-modal">
         <button class="btn cancel" data-dismiss="modal" aria-label="Close">Cancelar</button>
-        <button class="btn buy" onclick="alert('Compra efetuada!')">Comprar</button>
+        <button class="btn buy disable" id="buy-btn" onclick="alert('Compra efetuada!')">Comprar</button>
       </div>
     </div>
   </div>
 </div>
 <script src="{{ asset('js/student/carrinho.js') }}"></script>
 <script src="{{ asset('js/student/shop_filter.js') }}"></script>
+<script src="{{ asset('js/components/modal_detail.js') }}"></script>
 
 @endsection

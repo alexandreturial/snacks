@@ -211,7 +211,7 @@
         </div>
         <h3>Tipo</h3>
         <small id="type"></small>
-          <h3>Ingredientes</h3>
+          <h3 id="description-type"></h3>
           <div class="ingredients-list">
            <p id="description">
            </p>

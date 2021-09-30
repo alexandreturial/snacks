@@ -3,7 +3,7 @@
 @section('content')
 <div class="extact-page">
   <h4>Alexandre </h4>
-  <small>Saldo atual: R$ 40,00</small>
+  <small>Saldo atual: R$ 20,00</small>
   <div class="date-filter-deposit">
     <form action="">
       <div class="label-float">

@@ -7,9 +7,9 @@
   </div>
   <div class="user-info">
     <div class="user-img">
-      <img src="{{ asset('images/funcionario.jpg') }}" alt="avatar">
+      <img src="{{ asset('images/southpark.png') }}" alt="avatar">
     </div>
-      <small>Seymour Skinner</small>
+      <small>Herbert Garrison</small>
         <small>Funcionário</small>
         </div>
         <div class="user-menu">

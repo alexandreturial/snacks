@@ -7,7 +7,7 @@
     <form action="#">
       <div class="label-float">
         <input type="text" name="preco" required id="preco" onkeyup="moneyCurrent('preco')" value="" placeholder=" "/>
-        <label>Preço</label>
+        <label>Valor</label>
       </div>
 
       <button type="submit" class="btn btn-primary">Depositar</button>

@@ -4,10 +4,14 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use App\User;
+use Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
 {
-    /*
+   /*
     |--------------------------------------------------------------------------
     | Login Controller
     |--------------------------------------------------------------------------
@@ -18,14 +22,14 @@ class LoginController extends Controller
     |
     */
 
-    use AuthenticatesUsers;
+    // use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -34,6 +38,85 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        $this->middleware('guest', ['only'=> 'showLoginForm']);
+    }
+
+    public function showLoginForm(){
+        //Session()->flush();
+        //Auth()->logout();
+        if(key_exists('login',session()->all())){
+            
+            return Redirect()->route('adm_index');
+        }else{
+
+            return view('auth.login');
+        }
+    }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function login(){
+        
+        
+        Session()->flush();
+        Auth()->logout();
+        $crendentials = $this->validate(request(),[
+            'login' => 'required|string',
+            'password' => 'required|string',
+        ]);
+        
+        // Get user by email
+        $company = User::where('usuarios.login', $crendentials['login'])
+            ->first();
+           
+
+        // Validate Company
+        if(!$company) {
+            return back()->withErrors([
+                'email' => 'email ou senha errados'
+            ])->withInput(\request(['email']));
+        }
+        
+        if (
+            Hash::check($crendentials['password'], $company['senha'])
+            && $crendentials['login'] = $company['login']
+            ) {
+            session()->flush(); // Removes a specific variable
+            session ([
+                'login' => $crendentials['login'],
+                //'nome' => $company->nome,
+                'id' => $company->codUsuario,
+
+            ]);
+            
+           
+            if($company->idAluno != null){
+                return Redirect()->route('stu_index');
+            }else if($company->idResponsavel != null){
+                return Redirect()->route('resp_student');
+            }else{
+                $nome = User::getFuncionarioById($company['codUsuario'])->nome;
+                session([
+                    'nome'=> $nome,
+                ]);
+                
+                return Redirect()->route('adm_index');
+            }
+            
+        } else {
+
+            return back()->withErrors([
+                'email' => 'email ou senha errados'
+            ])->withInput(\request(['email']));
+        }
+    }
+
+    public function logout() {
+        Session()->flush();
+        Auth()->logout();
+
+        return redirect('/login');
     }
 }

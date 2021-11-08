@@ -42,8 +42,18 @@
   color: var(--textColorTertiary);
 }
 
+
+.detail-img{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
 .card-detail > .detail-img{
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;

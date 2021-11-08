@@ -4,26 +4,31 @@
 <div class="options">
   <button class="btn" data-toggle="modal" data-target="#newResponsible">Novo Responsável</button>
   <div class="label-float">
-    <input type="text" required name="busca" value="" id="busca" onchange="isNotEmpty('busca')" placeholder=" "/>
+    <input type="text" required name="busca" value="" id="busca" onkeyup="searchResponsible('busca')" placeholder=" "/>
     <label>Buscar Responsavel</label>
   </div>
 </div>
-<div class="cards">
+
+
+<div class="cards" id="cards">
+  @foreach($responsavel as $item)
   <div class="card" >
     <div data-toggle="modal" data-target="#modalDetailRes"
       onclick="loadvalues(
-        'Albus Percival Wulfric Brian Dumbledore', 
-        '841.171.548.48', 
-        'dumbledore_dr@gmail.com', 
-        '(74) 98745-1532'
+        '{{$item->nome}}', 
+        '{{$item->cpf}}', 
+        '{{$item->email}}', 
+        '{{$item->telefone}}',
+        '{{$item->id}}'
       )"
     >
-      <h4>Albus Percival Wulfric Brian Dumbledore</h4>
-      <small>(74) 98745-1532</small>
-      <small>dumbledore_dr@gmail.com</small>
+      <h4>{{$item->nome}}</h4>
+      <small>{{$item->telefone}}</small>
+      <small>{{$item->cpf}}</small>
     </div>
   </div>
-  <div class="card" >
+  @endforeach
+  <!-- <div class="card" >
     <div data-toggle="modal" data-target="#modalDetailRes"
       onclick="loadvalues(
         'Severus Prince Snape', 
@@ -50,8 +55,8 @@
       <small>(74) 98621-4817</small>
       <small>minerva_prof@gmail.com</small>
     </div>
-  </div>
-
+  </div> -->
+  
 </div>
 
 <!-- new responsible -->
@@ -62,30 +67,30 @@
         <h5 class="modal-title" id="newResponsible">Novo Responsável</h5>
       </div>
       <div class="modal-body">
-       <form action="#">
+       <form action="{{Route('new_responsible')}}" method="POST">
         @csrf
         <div class="label-float">
-          <input type="text" required value="" id="nome" onchange="isNotEmpty('nome')" placeholder=" "/>
+          <input type="text" name="name" required value="" id="nome" onchange="isNotEmpty('nome')" placeholder=" "/>
           <label>Nome</label>
         </div>
         <div class="label-float">
-          <input type="text" required value="" id="CPF" onkeyup="cpfFormat('CPF')"  maxlength="11"placeholder=" " />
+          <input type="text" name="cpf" required value="" id="CPF" onkeyup="cpfFormat('CPF')"  maxlength="11"placeholder=" " />
           <label>CPF</label>
         </div>
         <div class="label-float">
-          <input type="tel" required value="" id="telefone" onkeyup="foneFormat('telefone')"  maxlength="11" placeholder=" "/>
+          <input type="tel"  name="phone" required value="" id="telefone" onkeyup="foneFormat('telefone')"  maxlength="11" placeholder=" "/>
           <label>Telefone</label>
         </div>
         <div class="label-float">
-          <input type="email" required value="" id="email" onchange="isNotEmpty('email')" placeholder=" " />
+          <input type="email" name="email" required value="" id="email" onchange="isNotEmpty('email')" placeholder=" " />
           <label>Email</label>
         </div>
         <div class="label-float">
-          <input type="text" required value="" id="login" onchange="isNotEmpty('login')" placeholder=" " />
+          <input type="text" name="login" required value="" id="login" onchange="isNotEmpty('login')" placeholder=" " />
           <label>Login</label>
         </div>
         <div class="label-float">
-          <input type="password" required value="" id="senha" onchange="isNotEmpty('senha')" placeholder=" " />
+          <input type="password" name="password" required value="" id="senha" onchange="isNotEmpty('senha')" placeholder=" " />
           <label>Senha</label>
         </div>
         <div class="modal-footer">
@@ -130,8 +135,8 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Deletar</button>
-        <a type="button" class="btn btn-primary" href="{{Route('adm_edit_res')}}">Editar</a>
+        <a type="button" id="remove-responsible" class="btn btn-secondary" href="">Deletar</a>
+        <a type="button" id="edit-responsible" class="btn btn-primary" href="">Editar</a>
       </div>
     </div>
   </div>

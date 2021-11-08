@@ -4,7 +4,7 @@
 <div class="options">
   <button class="btn" data-toggle="modal" data-target="#newAluno">Novo Aluno</button>
   <div class="label-float">
-    <input type="text" required name="busca" value="" id="busca" onchange="isNotEmpty('busca')" placeholder=" "/>
+    <input type="text" required name="busca" value="" id="busca" onKey="searchStudnet('busca')" placeholder=" "/>
     <label>Buscar Aluno</label>
   </div>
 </div>
@@ -15,7 +15,7 @@
     <div class="content-user"  data-toggle="modal" data-target="#modalDetail">
       <h4>Alexandre Silva Turial de Brito</h4>
       <small>Matricula: 144181067</small>
-      <a href="{{Route('resp_detail')}}" class="btn btn-primary">Detalhe</a>
+      <a href="{{Route('resp_detail', $i)}}" class="btn btn-primary">Detalhe</a>
     </div>
   </div>
   @endfor
@@ -29,37 +29,38 @@
         <h5 class="modal-title" id="newResponsible">Novo Aluno</h5>
       </div>
       <div class="modal-body">
-       <form action="/" method="post">
+       <form action="{{Route('new_student')}}" method="post">
+        @csrf
         <div class="label-float">
-          <input type="text" required value="" id="matricula" onchange="isNotEmpty('matricula')" placeholder=" "/>
+          <input type="text" required name="matricula" value="" id="matricula" onchange="isNotEmpty('matricula')" placeholder=" "/>
           <label>Matricula</label>
         </div>
         <div class="label-float">
-          <input type="text" value="" required id="turma" onkeyup="isNotEmpty('turma')" placeholder=" " />
+          <input type="text" value="" name="turma" required id="turma" onkeyup="isNotEmpty('turma')" placeholder=" " />
           <label>Turma</label>
         </div>
         <div class="label-float">
-          <input type="text" value="" required id="turno" onkeyup="isNotEmpty('turno')" placeholder=" "/>
+          <input type="text" value="" name="turno" required id="turno" onkeyup="isNotEmpty('turno')" placeholder=" "/>
           <label>Turno</label>
         </div>
         <div class="label-float">
-          <input type="text" value="" required id="nome" onchange="isNotEmpty('nome')" placeholder=" " />
+          <input type="text" value="" name="nome" required id="nome" onchange="isNotEmpty('nome')" placeholder=" " />
           <label>Nome</label>
         </div>
         <div class="label-float">
-          <input type="tel" value="" required id="telefone" onkeyup="foneFormat('telefone')" maxlength="11" placeholder=" "/>
+          <input type="tel" value="" name="telefone" required id="telefone" onkeyup="foneFormat('telefone')" maxlength="11" placeholder=" "/>
           <label>Telefone</label>
         </div>
         <div class="label-float">
-          <input type="email" value="" required id="email" onchange="isNotEmpty('email')" placeholder=" " />
+          <input type="email" value="" name="email" required id="email" onchange="isNotEmpty('email')" placeholder=" " />
           <label>Email</label>
         </div>
         <div class="label-float">
-          <input type="tel" value="" required id="login" onchange="isNotEmpty('login')" placeholder=" " />
+          <input type="tel" value=""  name="login" required id="login" onchange="isNotEmpty('login')" placeholder=" " />
           <label>Login</label>
         </div>
         <div class="label-float">
-          <input type="password" value="" required id="senha" onchange="isNotEmpty('senha')" minlength="3" placeholder=" " />
+          <input type="password" value="" name="senha" required id="senha" onchange="isNotEmpty('senha')" minlength="3" placeholder=" " />
           <label>Senha</label>
         </div>
         <div class="modal-footer">

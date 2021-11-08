@@ -31,7 +31,7 @@
 <h4>Produtos</h4>
 <div class="options">
   <div class="label-float">
-    <input type="text" required name="busca" value="" id="busca" onchange="isNotEmpty('busca')" placeholder=" "/>
+    <input type="text" required name="busca" value="" id="busca" onKeyup="search('busca')" placeholder=" "/>
     <label>Buscar Produtos para bloquear</label>
   </div>
 </div>

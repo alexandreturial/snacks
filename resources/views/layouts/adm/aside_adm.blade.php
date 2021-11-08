@@ -9,7 +9,8 @@
     <div class="user-img">
       <img src="{{ asset('images/southpark.png') }}" alt="avatar">
     </div>
-      <small>Herbert Garrison</small>
+      
+      <small>{{session()->all()['nome']}}</small>
         <small>Funcionário</small>
         </div>
         <div class="user-menu">

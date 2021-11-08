@@ -29,7 +29,7 @@
 							<h4><a href="mailto:snacks@gmail.com">Contato</a> </h4>
 						</div>
 						<div class="sigin-btns">
-							<a class="primary" href="{{Route('login')}}">Login</a>
+							<a class="primary" href="{{Route('entrar')}}">Login</a>
 						</div>
 				</header>
 				<main>
@@ -106,41 +106,14 @@
 							<div class="carousel-inner">
 								<div class="carousel-item active">
 									<div class="info-school">
-										<h3>Hogwarts</h3>
-										<h5>Rua dos Alfeneiros, nº4</h5>
-										<h5>Tel: (75) 3250-8568</h5>
-										<h5>Email: hogwarts@gmail.com</h5>
+										<h3>{{$escola->nome}}</h3>
+										<h5>{{$escola->endereco}}</h5>
+										<h5>Tel: {{$escola->telefone}}</h5>
+										<h5>Email: {{$escola->email}}</h5>
 									</div>
 									<img class="d-block" src="{{ asset('images/escola1.jpeg') }}" alt="First slide">
 									
 								</div>
-								{{-- <div class="carousel-item">
-									<div class="info-school">
-										<h3>Escola Elementar de Springfield</h3>
-										<h5>Rua Plympton, 19</h5>
-										<h5>Tel: (16) 4002-8922</h5>
-										<h5>Email: springfield-school@gmail.com</h5>
-									</div>
-									<img class="d-block" src="{{ asset('images/escola2.jpg') }}" alt="Second slide">
-								</div>
-								<div class="carousel-item">
-									<div class="info-school">
-										<h3>Colégio U.A.</h3>
-										<h5>Rua Musutafu, 32 </h5>
-										<h5>Tel: (55) 8459-1584</h5>
-										<h5>Email: school_plusultra@gmail.com</h5>
-									</div>
-									<img class="d-block" src="{{ asset('images/escola3.png') }}" alt="Third slide">
-								</div> --}}
-							</div>
-							{{-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-								<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-								<span class="sr-only">Previous</span>
-							</a>
-							<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-								<span class="carousel-control-next-icon" aria-hidden="true"></span>
-								<span class="sr-only">Next</span>
-							</a> --}}
 						</div>
 					</div>
 				</main>

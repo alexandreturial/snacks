@@ -4,9 +4,9 @@ function loadvalues(nameVal, codeVal, imgVal, typeVal, descriptionVal, priceVal)
   let type = document.getElementById("type");
   let description = document.getElementById("description");
   let price = document.getElementById("price");
-  
   let title = document.getElementById("description-type");
-  
+  let a = document.getElementById('edit-product'); //or grab it by tagname etc
+
   title.textContent = typeVal == 'Bebida' ? 'Fornecedor' : 'Ingredientes';
 
   name.textContent = nameVal;
@@ -15,5 +15,8 @@ function loadvalues(nameVal, codeVal, imgVal, typeVal, descriptionVal, priceVal)
   type.textContent = typeVal;
   description.textContent = descriptionVal;
   price.textContent = priceVal;
-  $("#produto-image-detail").attr("src", imgVal);
+  $("#produto-image-detail").attr("src", 'images/'+imgVal);
+
+  
+  a.href = `admin/edit-product/${codeVal}`;
 }

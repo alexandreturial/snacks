@@ -35,35 +35,33 @@
                 <div class="card">
                     <div class="card-header">{{ __('Login') }}</div>
                     <div class="card-body">
-                        <form method="" action="{{ route('stu_index') }}">
+                        <form method="post" action="{{ route('login') }}">
                             @csrf
-                            <div class="form-group ">
+                            <div class="form-group">
                                 <div class="label-float">
-                                	<input type="text" required name="login" value="" id="login" onchange="isNotEmpty('login')" placeholder=" "/>
+                                	<input type="text" required name="login" value="" id="login" onchange="isNotEmpty('login')" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('login') }}"/>
                                 	<label>Login</label>
                                 </div>
     
-                                <div class="col-md-6">    
-                                    @error('email')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                <div class="input-group-append">
+                                    @if ($errors->has('email'))
+                                    <span class="invalid-feedback" role="alert">
+                                      <strong>{{ $errors->first('email') }}</strong>
+                                    </span> @endif
                                 </div>
                             </div>
     
                             <div class="form-group">
 															<div class="label-float">
-																<input type="password" required name="password" value="" id="password" onchange="isNotEmpty('password')" placeholder=" "/>
+																<input type="password" required name="password" value="" id="password" onchange="isNotEmpty('password')" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" value="{{ old('password') }}"/>
 																<label>Senha</label>
 															</div>
-                              <div class="col-md-6">    
-                                  @error('password')
+                              <div class="input-group-append">
+                                    @if ($errors->has('email'))
                                     <span class="invalid-feedback" role="alert">
-                                      <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                              </div>
+                                      <strong>{{ $errors->first('email') }}</strong>
+                                    </span> @endif
+                                </div>
                             </div>
                             <div class="form-group">
                               <div class="col-md-8 offset-md-4">

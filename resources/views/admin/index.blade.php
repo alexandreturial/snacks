@@ -4,168 +4,44 @@
 <div class="options">
   <button class="btn" data-toggle="modal" data-target="#newProduct">Novo Produto</button>
   <div class="label-float">
-    <input type="text" required name="busca" value="" id="busca" onchange="isNotEmpty('busca')" placeholder=" "/>
+    <input type="text" required name="busca" value="" id="busca" onkeyup="search('busca')" placeholder=" "/>
     <label>Buscar Produto</label>
   </div>
 </div>
 
-<div class="cards">
- {{-- @for($i=0; $i < 15; $i++) --}}
+<div class="cards" id="cards-product">
+  
+
+  @foreach($produtos as $item)
+  
   <div class="card-product" >
-    <span class="locked" id='15' onclick="unlockFood('15')">
+    @if($item->status == 1)
+    <span class="locked" id={{$item->codigo}} onclick="unlockFood('{{$item->codigo}}')">
+      <img src="{{ asset('images/unlock.svg') }}" alt="">
+    </span>
+    @else
+    <span class="locked" id={{$item->codigo}} onclick="unlockFood('{{$item->codigo}}')">
       <img src="{{ asset('images/lock.svg') }}" alt="">
     </span>
+    @endif
     <div data-toggle="modal" data-target="#descriptionModal" 
     onclick="loadvalues(
-      'Pão com ovo', 
-      'Cod.: 1561561', 
-      'images/food3.png', 
-      'Comida', 
-      'Este produto contém 4 ovos (ovos orgânicos ou caipiras), 2 colheres de sopa de vinagre de vinho branco, 2 english muffins cortados ao meio ou fatias de pão de forma branco sem casca, Um pouco de manteiga, 8 fatias de presunto, bacon ou salmão fumado e, cebolinha picada para finalizar', 
-      'R$ 4,00'
+      '{{$item->nome}}', 
+      '{{$item->codigo}}', 
+      '{{$item->foto}}', 
+      '{{$item->tipo}}', 
+      '{{$item->info}}', 
+      '{{$item->preco}}'
       )">
       <div class="img-product">
-        <img id="produto-image" src="{{ asset('images/food3.png') }}" alt="Produto">
+        <img id="produto-image" src="{{ asset('images/'.$item->foto) }}" alt="Produto">
       </div>
-      <h4>Pão com ovo</h4>
-      <small>R$ 4,00</small>
+      <h4>{{$item->nome}}</h4>
+      <small>R$ {{number_format($item->preco, 2, ',', ',')}}</small>
     </div>
   </div>
-  <div class="card-product" >
-    <span class="locked" id='16' onclick="unlockFood('16')">
-      <img src="{{ asset('images/lock.svg') }}" alt="">
-    </span>
-    <div data-toggle="modal" data-target="#descriptionModal"
-      onclick="loadvalues(
-        'Rosquinhas', 
-        'Cod.: 1558525', 
-        'images/rosquinhas.jpg', 
-        'Comida', 
-        '4 xícaras farinha de trigo ou até o ponto, 1 xícara de açúcar refinado, 1/2 xícara de óleo, 1/2 xícara de leite, 2 ovos, 1 colher (sopa) de fermento em pó, 1 pitada de sal canela em pó', 
-        'R$ 2,50'
-      )"
-    
-    >
-      <div class="img-product">
-        <img id="produto-image" src="{{ asset('images/rosquinhas.jpg') }}" alt="Produto">
-      </div>
-      <h4>Rosquinhas</h4>
-      <small>R$ 2,50</small>
-    </div>
-  </div>
-  <div class="card-product" >
-    <span class="locked" id='17' onclick="unlockFood('17')">
-      <img src="{{ asset('images/lock.svg') }}" alt="">
-    </span>
-    <div data-toggle="modal" data-target="#descriptionModal"
-      onclick="loadvalues(
-        'Panquecas', 
-        'Cod.: 1514227', 
-        'images/panquecas.jpg', 
-        'Comida', 
-        '2 xícaras (chá) de farinha de trigo, 2 xícaras (chá) de leite, 3 ovos, 1 pitada de sal', 
-        'R$ 5,00'
-      )"
-
-    >
-      <div class="img-product">
-        <img id="produto-image" src="{{ asset('images/panquecas.jpg') }}" alt="Produto">
-      </div>
-      <h4>Panquecas</h4>
-      <small>R$ 5,00</small>
-    </div>
-  </div>
-  <div class="card-product" >
-    <span class="locked" id='18' onclick="unlockFood('18')">
-      <img src="{{ asset('images/lock.svg') }}" alt="">
-    </span>
-    <div data-toggle="modal" data-target="#descriptionModal"
-      onclick="loadvalues(
-        'Cupcake', 
-        'Cod.: 1118247', 
-        'images/cupcake.jpg', 
-        'Comida', 
-        '3 gemas, 2 xícaras de açúcar, 1 colher de sopa de essência de baunilha, 250 ml de leite, 1 xícara de óleo, 3 claras em neve, 3 e 1/2 xícaras de farinha de trigo, 1 colher (sopa) de fermento, Recheio e cobertura de doce de leite', 
-        'R$ 3,50'
-      )"
-    
-    >
-      <div class="img-product">
-        <img id="produto-image" src="{{ asset('images/cupcake.jpg') }}" alt="Produto">
-      </div>
-      <h4>Cupcake</h4>
-      <small>R$ 3,50</small>
-    </div>
-  </div>
-  <div class="card-product" >
-    <span class="locked" id='19' onclick="unlockFood('19')">
-      <img src="{{ asset('images/lock.svg') }}" alt="">
-    </span>
-    <div data-toggle="modal" data-target="#descriptionModal"
-      onclick="loadvalues(
-        'Sorvete', 
-        'Cod.: 12358478', 
-        'images/food2.png', 
-        'Comida', 
-        '500 ml de leite integral (leite de vaca), 1 caixa de creme de leite, 1/2 lata de leite condensado, 10 colheres de sopa de açúcar, 1 e 1/2 colher de sopa de pó para sorvete com sabor de sua preferência, 1 colher de sopa bem cheia de liga neutra, 1 colher de chá de emulsificante', 
-        'R$ 2,50'
-      )"
-    >
-      <div class="img-product">
-        <img id="produto-image" src="{{ asset('images/food2.png') }}" alt="Produto">
-      </div>
-      <h4>Sorvete</h4>
-      <small>R$ 2,50</small>
-    </div>
-  </div>
-  <div class="card-product" >
-    <span class="locked" id='19' onclick="unlockFood('19')">
-      <img src="{{ asset('images/lock.svg') }}" alt="">
-    </span>
-    <div data-toggle="modal" data-target="#descriptionModal"
-      onclick="loadvalues(
-        'Coca-cola', 
-        'Cod.: 7845164', 
-        'images/coke.jpg', 
-        'Bebida', 
-        'Coca-Cola Comapany', 
-        'R$ 1,99'
-      )"
-    >
-      <div class="img-product">
-        <img id="produto-image" src="{{ asset('images/coke.jpg') }}" alt="Produto">
-      </div>
-      <h4>Coca-cola</h4>
-      <small>R$ 1,99</small>
-    </div>
-  </div>
-  <div class="card-product" >
-    <span class="locked" id='21' onclick="unlockFood('21')">
-      <img src="{{ asset('images/lock.svg') }}" alt="">
-    </span>
-    <div data-toggle="modal" data-target="#descriptionModal"
-      onclick="loadvalues(
-        'Milkshake', 
-        'Cod.: 45813579', 
-        'images/coke.jpg', 
-        'Bebida', 
-        'Boobs', 
-        'R$ 10,00'
-      )"
-    >
-      <div class="img-product">
-        <img id="produto-image" src="{{ asset('images/milkshake.jpg') }}" alt="Produto">
-      </div>
-      <h4>Milkshake</h4>
-      <small>R$ 10,00</small>
-    </div>
-    </div>
-    </div>
-  </div>
-  </div>
-  {{-- @endfor --}}
+  @endforeach
 </div>
-
 
 <!-- Modal -->
 <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="descriptionModal" aria-hidden="true">
@@ -197,7 +73,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
-        <a type="button" class="btn btn-primary" href="{{Route('adm_edit_prod')}}">Editar</a>
+        <a type="button" id="edit-product" class="btn btn-primary" href="">Editar</a>
       </div>
     </div>
   </div>
@@ -211,7 +87,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Novo produto</h5>
       </div>
       <div class="modal-body">
-        <form action="#" method="POST">
+        <form action="{{route('new_product')}}" method="POST">
           @csrf
           <div class="image-info">
             <div class="info-base">
@@ -220,11 +96,11 @@
                 <label>Nome</label>
               </div>
               <div class="label-radio-btn">
-                <input type="radio" checked required name="tipo" value="" id="comida" onchange="isDrink('comida')" placeholder=" " />
+                <input type="radio" checked name="tipo" value="comida" id="comida" onchange="isDrink('comida')" placeholder=" " />
                 <label for="comida">Comida</label>
               </div>
               <div class="label-radio-btn">
-                <input type="radio" required name="tipo" value="" id="bebida" onchange="isDrink('bebida')" placeholder=" " />
+                <input type="radio" name="tipo" value="bebida" id="bebida" onchange="isDrink('bebida')" placeholder=" " />
                 <label for="bebida">Bebida</label>
               </div>
               
@@ -234,20 +110,27 @@
               </div>
             </div>
 
-            <button class="btn-img"> 
+            <button id="btn-img"  type="button" class="btn-img"> 
               <label for="image">Selecionar imagem  </label>
             </button>
-            <input type="file" required name="image" id="image" accept="image/gif, image/jpeg"/>
+            <input type="file" required name="image" onchange="selectImage('image')" id="image" accept="image/gif, image/jpeg"/>
+            
+            <div id="preview" class="hide-img detail-img">
+              <div class="img-product">
+                <img id="produto-image-new" src="" alt="Produto">
+              </div>
+              <label for="image">Trocar imagem  </label>
+            </div>
           </div>
 
           <div class="label-float" id="comida-card">
-            <textarea type="textarea" required name="ingredientes" id="ingredientes" onchange="isNotEmpty('ingredientes')" value=""name="" id="">
+            <textarea type="textarea" name="ingredientes" id="ingredientes" onchange="isNotEmpty('ingredientes')" value=""name="" id="">
             </textarea>
             <label>Ingredientes</label>
           </div>
 
           <div class="label-float disable" id="bebida-card">
-            <input type="text" name="fornecedor" required id="fornecedor" onkeyup="isNotEmpty('codigo')" value="" placeholder=" "/>
+            <input type="text" name="fornecedor" id="fornecedor" onkeyup="isNotEmpty('codigo')" value="" placeholder=" "/>
             <label>Fornecedor</label>
           </div>
 
@@ -265,6 +148,6 @@
   </div>
 </div>
 @endsection
-<script src="{{ asset('js/Home/home.js') }}"></script>
+<script src="{{ asset('js/Home/home.js') }}"></>
 <script src="{{ asset('js/components/new_product_card.js') }}"></script>
 <script src="{{ asset('js/components/modal_detail.js') }}"></script>

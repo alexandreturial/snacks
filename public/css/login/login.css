@@ -25,6 +25,12 @@
   justify-content: center;
 }
 
+.invalid-feedback{
+  display: flex;
+}
+.form-group{
+  flex-direction: column;
+}
 .card-body form{
   display: flex;
   flex-direction: column;

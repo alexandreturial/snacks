@@ -36,6 +36,11 @@
 .modal-body .btn-img{
   background: none;
 }
+
+.hide-img{
+  display: none!important;
+}
+
 .modal-body button > label{
   width: 120px;
   height: 120px;

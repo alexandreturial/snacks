@@ -19,15 +19,16 @@ class Responsavel extends Model
         'cpf', 
         'telefone',
         'email',
-        'id_usuario',
+        'idUsuario'
+       
     ];
     public $timestamps = false;
 
     static function getResponsibleByname(String $name){
         $responsavel = Responsavel::join(
             'usuarios', 
-            'usuarios.idResponsavel', 
-            'responsavel.id')->where('nome', 'LIKE', '%' . $name . '%')->get();
+            'usuarios.codUsuario', 
+            'responsavel.idUsuario')->where('nome', 'LIKE', '%' . $name . '%')->get();
         
         return $responsavel;
     }
@@ -35,9 +36,16 @@ class Responsavel extends Model
     static function getAllResponsible(){
         $responsavel = Responsavel::join(
             'usuarios', 
-            'usuarios.idResponsavel', 
-            'responsavel.id')->get();
+            'usuarios.codUsuario', 
+            'responsavel.idUsuario')->get();
             
         return $responsavel;
+    }
+
+    static function getResponsibleById(int $id){
+        return Responsavel::join(
+            'usuarios', 
+            'usuarios.codUsuario', 
+            'responsavel.idUsuario')->where('codUsuario', $id)->first();
     }
 }

@@ -105,11 +105,11 @@ aside .user-info, .user-menu{
 }
 
 .user-info > small{
-  
+
   color: var(--backgroundColor);
 
   font: 400 1rem 'Poppins';
-
+  text-align: center;
 }
 .user-menu{
   align-items: start;

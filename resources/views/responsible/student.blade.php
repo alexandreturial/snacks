@@ -4,21 +4,21 @@
 <div class="options">
   <button class="btn" data-toggle="modal" data-target="#newAluno">Novo Aluno</button>
   <div class="label-float">
-    <input type="text" required name="busca" value="" id="busca" onKey="searchStudnet('busca')" placeholder=" "/>
+    <input type="text" required name="busca" value="" id="busca" onKeyup="searchStudent('busca')" placeholder=" "/>
     <label>Buscar Aluno</label>
   </div>
 </div>
 
-<div class="cards">
- @for($i=0; $i < 3; $i++)
+<div class="cards"  id="cards">
+ @foreach($alunos as $aluno)
   <div class="card" >
     <div class="content-user"  data-toggle="modal" data-target="#modalDetail">
-      <h4>Alexandre Silva Turial de Brito</h4>
-      <small>Matricula: 144181067</small>
-      <a href="{{Route('resp_detail', $i)}}" class="btn btn-primary">Detalhe</a>
+      <h4>{{$aluno->nome}}</h4>
+      <small>Matricula: {{$aluno->matricula}}</small>
+      <a href="{{Route('resp_detail', $aluno->id)}}" class="btn btn-primary">Detalhe</a>
     </div>
   </div>
-  @endfor
+  @endforeach
 </div>
 
 <!-- new Studant -->
@@ -74,57 +74,5 @@
   </div>
 </div>
 
-{{-- 
-<!-- Modal -->
-<div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetail" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="button modal-header close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </div>
-      <div class="modal-body card-detail">
-        <div class="box">
-          <div class="content-info">
-            <h3>Nome</h3>
-            <small>Example</small>
-          </div>
-          <div class="content-info">
-            <h3>CPF</h3>
-            <small>Example</small>
-          </div>
-         
-        </div>
-        <div class="box">
-          <div class="content-info">
-            <h3>Email</h3>
-            <small>Example</small>
-          </div>
-          <div class="content-info">
-            <h3>Telefone</h3>
-            <small>Example</small>
-          </div>
-        </div>
-        <div class="box">
-          <div class="content-info">
-            <h3>Login</h3>
-            <small>Example</small>
-          </div>
-          <div class="content-info">
-            <h3>Senha</h3>
-            <small>Example</small>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <a href="/responsible/deposit" type="button" class="btn">Depositar</a>
-        <a href="/responsible/extract" type="button" class="btn">Extrato</a>
-        <a href="/responsible/consumption" type="button" class="btn">Consumo</a>
-
-        <button type="button" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#newAluno">Editar</button>
-      </div>
-    </div>
-  </div>
-</div> --}}
-
 @endsection
-<script src="{{ asset('js/Home/home.js') }}"></script>
+<script src="{{ asset('js/responsible/index.js') }}"></script>

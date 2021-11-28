@@ -97,20 +97,23 @@ class AdminController extends Controller
         $data = $value->all();
         
         try{
+            $user = User::insertGetId([
+                'login' => $data['login']
+                ,'senha' =>  Hash::make($data['password'])
+                ,'idEscola' => 1
+                ,'type' => 2
+            ]);
+
+
             $idResponsavel = Responsavel::insertGetId([
                 'cpf' => $data['cpf']
                 ,'nome' => $data['name'] 
                 ,'telefone' => $data['phone'] 
                 ,'email' => $data['email']
+                ,'idUsuario' => $user
             ]);
             
-            $produto = User::insert([
-                'login' => $data['login']
-                ,'senha' =>  Hash::make($data['password'])
-                ,'idEscola' => 1
-                ,'idResponsavel' => $idResponsavel
-            ]);
-
+            
         }catch (Exception $e){
             return back()->withErrors([
                 'nome' => 'Dados incorrentos'
@@ -145,8 +148,8 @@ class AdminController extends Controller
         //dd($id);
         $responsavel = Responsavel::where('id', $id)->join(
             'usuarios', 
-            'usuarios.idResponsavel', 
-            'responsavel.id')->first();
+            'usuarios.id', 
+            'responsavel.idUsuario')->first();
 
         return view('admin.editResponsible', compact('responsavel'));
     }
@@ -220,11 +223,15 @@ class AdminController extends Controller
     }
     public function destroyResponsible($id)
     {
-        // dd($id);
+        
         try{
+
+            $idUsuario = Responsavel::where('id', $id)->first();
+
+            $produto = User::where('codUsuario', $idUsuario->idUsuario)->delete();
+
             $idResponsavel = Responsavel::where('id', $id)->delete();
             
-            $produto = User::where('idResponsavel', $id)->delete();
 
         }catch (Exception $e){
             return back()->withErrors([

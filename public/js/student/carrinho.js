@@ -2,12 +2,21 @@
 // let elemento = document.querySelector('#add');
 // let elemento = document.querySelector('#less');
 
+let produtos = [];
+let totalCompra = 0; 
 
 function add(id){
   let elemento = document.getElementById("quantity"+id);
   let contador = parseFloat(elemento.textContent, 10);
   contador += 1;
   elemento.textContent = contador;
+
+  produtos = produtos.filter((value) =>{
+    if( value.id == id){
+      value.qt = contador
+    }
+    return produtos;
+  });
 }
 
 function less(id){
@@ -26,6 +35,11 @@ function less(id){
 function remove(id){
   var el = document.getElementById("item"+id);
   el.remove();
+
+  var index = produtos.findIndex(function(produto){
+    return produto.id === id;
+  })
+  if (index !== -1) produtos.splice(index, 1);
 }
 
 function total(preco){
@@ -42,11 +56,23 @@ function total(preco){
   if(val <= 0){
     isEmpty();
   }
+  totalCompra = val;
   val = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(val);
 
   el.textContent = 'Total: ' + val;
 }
 
+function clearCart(){
+  let elements = document.getElementsByClassName("card-consumption");
+ 
+  while(elements.length > 0){
+    elements[0].parentNode.removeChild(elements[0]);
+  }
+  var el = document.getElementById("totalcarrinho");
+  el.textContent = 'Total: 00,00';
+
+  isEmpty();
+}
 
 function isEmpty(){
   let carrinho = document.getElementById("carrinho");
@@ -59,6 +85,44 @@ function isEmpty(){
 
   let btnBuy = document.getElementById("buy-btn");
   btnBuy.classList.add('disable');
+}
+
+function buy(idAluno){
+
+  var token = $('meta[name="csrf-token"]').attr('content');
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.open(
+      "POST", "/student/buy", true
+      );
+    // Envia a informação do cabeçalho junto com a requisição.
+    xhttp.setRequestHeader(
+      "Content-Type", 
+      "application/json",
+    );
+    xhttp.setRequestHeader(
+      "X-CSRF-TOKEN", 
+      `${token}`,
+    );
+
+    xhttp.onreadystatechange = function() { // Chama a função quando o estado mudar.
+        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+          // let response = JSON.parse(xhttp.response);
+            
+          //clearCart();
+         
+          document.location.reload(true);
+        }
+    }
+    if(confirm("Deseja realizar o pedido?")){
+      xhttp.send(JSON.stringify({
+        'produtos': produtos,
+        'total': totalCompra,
+        'idAluno': idAluno
+      }));     
+    }
+  
+  
 }
 
 function newElement(nome, valor, id) {
@@ -118,7 +182,7 @@ function newElement(nome, valor, id) {
   iconRemove.classList.add('fa-trash');
   
   var title = document.createTextNode(nome);
-  var preco = document.createTextNode(  val = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor));
+  var preco = document.createTextNode(val = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor));
   var quantidade = document.createTextNode(1);
   
   titleDiv.appendChild(title);
@@ -147,8 +211,16 @@ function newElement(nome, valor, id) {
   carrinho.appendChild(itenDiv);
 
   total(valor);
-
+ 
   alert("Produto adicionado com sucesso!");
+
+  produtos.push({
+    preco: valor,
+    nome: nome, 
+    id: id,
+    qt: 1
+  });
+
 
   let btnBuy = document.getElementById("buy-btn");
   btnBuy.classList.remove('disable');
@@ -156,3 +228,5 @@ function newElement(nome, valor, id) {
   var el = document.getElementById("empty-cart");
   el.remove();
 } 
+
+

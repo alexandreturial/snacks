@@ -3,38 +3,39 @@
 @section('content')
 
 <div class="responsible-data">
-  <h2>Altere os dados de Alexandre Silva</h2>
-  <form action="/" method="post">
+  <h2>Altere os dados de {{$aluno->nome}}</h2>
+  <form action="{{Route('update_student', $aluno->id)}}" method="post">
+    @csrf
     <div class="label-float">
-      <input class="not-empty" type="text" required value="144181067" id="matricula" onchange="isNotEmpty('matricula')" placeholder=" "/>
+      <input class="not-empty" type="text" name="matricula" required value="{{$aluno->matricula}}" id="matricula" onchange="isNotEmpty('matricula')" placeholder=" "/>
       <label>Matricula</label>
     </div>
     <div class="label-float">
-      <input class="not-empty" type="text" value="SSD-45" required id="turma" onkeyup="isNotEmpty('turma')" placeholder=" " />
+      <input class="not-empty" type="text" name="turma" value="{{$aluno->turma}}" required id="turma" onkeyup="isNotEmpty('turma')" placeholder=" " />
       <label>Turma</label>
     </div>
     <div class="label-float">
-      <input class="not-empty" class="not-empty" type="text" value="Matutino" required id="turno" onkeyup="isNotEmpty('turno')" placeholder=" "/>
+      <input class="not-empty" class="not-empty" name="turno" type="text" value="{{$aluno->turno}}" required id="turno" onkeyup="isNotEmpty('turno')" placeholder=" "/>
       <label>Turno</label>
     </div>
     <div class="label-float">
-      <input class="not-empty" type="text" value="Alexandre Silva Turial de Brito" required id="nome" onchange="isNotEmpty('nome')" placeholder=" " />
+      <input class="not-empty" type="text" name="nome" value="{{$aluno->nome}}" required id="nome" onchange="isNotEmpty('nome')" placeholder=" " />
       <label>Nome</label>
     </div>
     <div class="label-float">
-      <input class="not-empty" type="tel" value="(71) 98457-1518" required id="telefone" onkeyup="foneFormat('telefone')" maxlength="11" placeholder=" "/>
+      <input class="not-empty" type="tel" name="telefone" value="{{$aluno->telefone}}" required id="telefone" onkeyup="foneFormat('telefone')" maxlength="11" placeholder=" "/>
       <label>Telefone</label>
     </div>
     <div class="label-float">
-      <input class="not-empty" type="email" value="aleturial@gmail.com" required id="email" onchange="isNotEmpty('email')" placeholder=" " />
+      <input class="not-empty" type="email" name="email" value="{{$aluno->email}}" required id="email" onchange="isNotEmpty('email')" placeholder=" " />
       <label>Email</label>
     </div>
     <div class="label-float">
-      <input type="tel" value="" required id="login" onchange="isNotEmpty('login')" placeholder=" " />
+      <input type="tel" value="" id="login" name="login" onchange="isNotEmpty('login')" placeholder=" " />
       <label>Login</label>
     </div>
     <div class="label-float">
-      <input type="password" value="" required id="senha" onchange="isNotEmpty('senha')" minlength="3" placeholder=" " />
+      <input type="password" value="" id="senha" name="senha" onchange="isNotEmpty('senha')" minlength="3" placeholder=" " />
       <label>Senha</label>
     </div>
     <div class="modal-footer">

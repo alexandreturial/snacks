@@ -23,6 +23,9 @@
 
           <input type="radio" id="alunos" name="menu-option"/>
           <a for="responsavel" href="{{ route('adm_student') }}">Alunos</a>
+
+          <input type="radio" id="logout" name="menu-option"/>
+          <a for="responsavel" href="{{ route('logout') }}">Sair</a>
         </div>
   </aside>
   <script src="{{ asset('js/Aside/aside.js') }}"></script>

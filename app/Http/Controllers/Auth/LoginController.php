@@ -86,15 +86,22 @@ class LoginController extends Controller
             session()->flush(); // Removes a specific variable
             session ([
                 'login' => $crendentials['login'],
-                //'nome' => $company->nome,
                 'id' => $company->codUsuario,
-
             ]);
             
            
-            if($company->idAluno != null){
+            if($company->type == 3){
+                $aluno = User::getStudentById($company['codUsuario']);
+                session([
+                    'nome'=> $aluno->nome,
+                    'saldo' => $aluno->saldo,
+                ]);
                 return Redirect()->route('stu_index');
-            }else if($company->idResponsavel != null){
+            }else if($company->type == 2){
+                $nome = User::getResponsableById($company['codUsuario'])->nome;
+                session([
+                    'nome'=> $nome,
+                ]);
                 return Redirect()->route('resp_student');
             }else{
                 $nome = User::getFuncionarioById($company['codUsuario'])->nome;
@@ -117,6 +124,6 @@ class LoginController extends Controller
         Session()->flush();
         Auth()->logout();
 
-        return redirect('/login');
+        return redirect('/entrar');
     }
 }

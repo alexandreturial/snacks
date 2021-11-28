@@ -117,15 +117,24 @@ function newcardProduct(products){
     itenDiv.classList.add('card-product');
 
     var spanIcon = document.createElement("span");
-    spanIcon.classList.add('locked');
+   
     spanIcon.id = product.codigo;
     spanIcon.addEventListener("click", function(event){
       event.preventDefault(); 
       unlockFood(product.codigo);
     });
 
+   
     var iconlock = document.createElement("img");
-    iconlock.src = 'images/lock.svg';
+    
+    if(product.isBlock){
+      iconlock.src = '/images/lock.svg';
+      spanIcon.classList.add('locked');
+    }else{
+      iconlock.src = '/images/unlock.svg';
+      spanIcon.classList.add('unlocked');
+    }
+
   
     spanIcon.appendChild(iconlock);
     itenDiv.appendChild(spanIcon);
@@ -142,7 +151,7 @@ function newcardProduct(products){
 
     var imageFood = document.createElement("img");
     imageFood.id = 'produto-image';
-    imageFood.src = `/images/${product.foto}`;
+    imageFood.src = `/images/produtos/${product.codigo}/${product.foto}`;
     divImageFood.appendChild(imageFood);
 
     contentDiv.appendChild(divImageFood);
@@ -210,6 +219,7 @@ function newResposible(responsibles){
     cards.appendChild(itenDiv);
   });
 }
+
 function unlockFood(id) {
   var token = $('meta[name="csrf-token"]').attr('content');
   var element = document.getElementById(id);
@@ -468,4 +478,38 @@ function newStudent(students){
     itenDiv.appendChild(contentDiv);
     cards.appendChild(itenDiv);
   });
+}
+
+
+
+
+function isDrink(id) {
+  
+  var element = document.getElementById(id);
+
+  var comida = document.getElementById("comida-card");
+  var bebida = document.getElementById("bebida-card");
+
+  if (id == 'comida') {
+    comida.classList.remove('disable');
+    bebida.classList.add('disable');
+  } else {
+    bebida.classList.remove('disable');
+    comida.classList.add('disable');
+  }
+
+  if (element.value.trim() != '') {
+    if (element instanceof HTMLTextAreaElement) {
+      element.classList.add('not-empty-area');
+    } else {
+      element.classList.add('not-empty');
+    }
+  } else {
+    if (element instanceof HTMLTextAreaElement) {
+      element.classList.remove('not-empty-area');
+    } else {
+      element.classList.remove('not-empty');
+    }
+  }
+
 }

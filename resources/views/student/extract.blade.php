@@ -2,8 +2,9 @@
 
 @section('content')
 <div class="extact-page">
-  <h4>Alexandre </h4>
-  <small>Saldo atual: R$ 20,00</small>
+  <h4>{{session()->all()['nome']}}</h4>
+  <small>Saldo atual: R$ {{number_format($aluno->saldo, 2, ',', ',')}}</small>
+  
   <div class="date-filter-deposit">
     <form action="">
       <div class="label-float">
@@ -16,42 +17,26 @@
         <input type="date" value="" required id="fim" placeholder=" " />
         
       </div>
-      <button type="submit" class="btn btn-primary">Buscar</button>
+      <button type="button" onclick="filterDate()" class="btn btn-primary">Buscar</button>
 
     </form>
   </div>
-  <div>
-    <div class="card-extract">
+  <div id="cards-extract">
+    @foreach($deposito as $key => $item)
+    <div class="card-extract" id="card-extract">
       <span class="extact-icon add">
         <i class="fa fa-plus"></i>
       </span>
       <div>
-        <h4>25/06/2021</h4>
-        <small>R$ 5,00</small>
-        <small>R$ 15,00</small>
-        <small>R$ 10,00</small>
+        <h4>{{$key}}</h4>
+        @foreach($item as $val)
+        <small>R$ {{number_format($val['valor'], 2, ',', ',')}}</small>
+        @endforeach
       </div>
     </div>
-    <div class="card-extract">
-      <span class="extact-icon add">
-        <i class="fa fa-plus"></i>
-      </span>
-      <div>
-        <h4>05/07/2021</h4>
-        <small>R$ 50,00</small>
-      </div>
-    </div>
-    <div class="card-extract">
-      <span class="extact-icon add">
-        <i class="fa fa-plus"></i>
-      </span>
-      <div>
-        <h4>30/02/2021</h4>
-        <small>R$ 30,00</small>
-        <small>R$ 40,00</small>
-      </div>
-    </div>
+    @endforeach
   </div>
-
 </div>
 @endsection
+
+<script src="{{ asset('js/student/extract.js') }}"></script>

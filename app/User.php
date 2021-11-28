@@ -25,9 +25,7 @@ class User extends Authenticatable
         'login', 
         'senha',
         'idEscola',
-        'idAluno',
-        'idResponsavel',
-        'idFuncionario'
+        'type',
     ];
 
     /**
@@ -63,7 +61,23 @@ class User extends Authenticatable
     }
 
     public static function getFuncionarioById($id){
-        $user = User::join('funcionario', 'usuarios.idFuncionario', 'funcionario.id')
+        $user = User::join('funcionario', 'usuarios.codUsuario', 'funcionario.idUsuario')
+        ->where('usuarios.codUsuario', $id)
+        ->first();
+       
+        return $user;
+    }
+
+    public static function getStudentById($id){
+        $user = User::join('aluno', 'usuarios.codUsuario', 'aluno.idUsuario')
+        ->where('usuarios.codUsuario', $id)
+        ->first();
+       
+        return $user;
+    }
+
+    public static function getResponsableById($id){
+        $user = User::join('responsavel', 'usuarios.codUsuario', 'responsavel.idUsuario')
         ->where('usuarios.codUsuario', $id)
         ->first();
        

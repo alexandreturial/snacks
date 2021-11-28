@@ -15,8 +15,7 @@ function loadvalues(nameVal, codeVal, imgVal, typeVal, descriptionVal, priceVal)
   type.textContent = typeVal;
   description.textContent = descriptionVal;
   price.textContent = priceVal;
-  $("#produto-image-detail").attr("src", 'images/'+imgVal);
+  $("#produto-image-detail").attr("src", '/images/produtos/'+codeVal+'/'+imgVal);
 
-  
   a.href = `admin/edit-product/${codeVal}`;
 }

@@ -28,9 +28,17 @@
 							<h4><a href="#aboutpage">Sobre</a></h4>
 							<h4><a href="mailto:snacks@gmail.com">Contato</a> </h4>
 						</div>
-						<div class="sigin-btns">
-							<a class="primary" href="{{Route('entrar')}}">Login</a>
-						</div>
+						
+						@if(in_array('nome', session()->all()))
+						
+							<div class="sigin-btns">
+								<a class="primary" href="{{Route('entrar')}}">Home</a>
+							</div>
+            @else
+							<div class="sigin-btns">
+								<a class="primary" href="{{Route('entrar')}}">Login</a>
+							</div>
+            @endguest
 				</header>
 				<main>
 					<div class="home-page">

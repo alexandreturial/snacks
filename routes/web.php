@@ -53,12 +53,13 @@ Route::prefix('responsible')->group(function () {
 
     Route::get('/', 'Responsible\ResponsibleController@index')->name('resp_student');
     Route::post('/search-student', 'Responsible\ResponsibleController@searchStudent');
+    Route::post('/search-product', 'Responsible\ResponsibleController@searchProduct');
 
     Route::post('/new-student', 'Responsible\ResponsibleController@create')->name('new_student');
 
-    Route::get('/edit', function () {
-        return view('responsible/student_edit');
-    })->name('resp_edit');
+    Route::get('/edit/{id?}', 'Responsible\ResponsibleController@edit')->name('resp_edit');
+    Route::post('/student-update/{id?}', 'Responsible\ResponsibleController@update')->name('update_student');
+    Route::post('/block-prduct', 'Responsible\ResponsibleController@block');
 
     // Route::get('/student', function () {
     //     return view('responsible/student');
@@ -66,29 +67,24 @@ Route::prefix('responsible')->group(function () {
 
     Route::get('/detail/{id?}', 'Responsible\ResponsibleController@show')->name('resp_detail');
 
-    Route::get('/deposit', function () {
-        return view('responsible/deposit');
-    })->name('resp_deposit');
+    Route::get('/deposit/{id?}', 'Responsible\ResponsibleController@depoistyView')->name('resp_deposit');
+    Route::post('/new-deposit', 'Responsible\ResponsibleController@depoisty')->name('resp_new_deposit');
 
-    Route::get('/extract', function () {
-        return view('responsible/extract');
-    })->name('resp_extract');
+    Route::get('/extract/{id?}', 'Responsible\ResponsibleController@extract')->name('resp_extract');
+    Route::post('/extract-by-date', 'Responsible\ResponsibleController@extractByDate');
 
-    Route::get('/consumption', function () {
-        return view('responsible/consumption');
-    })->name('resp_consumption');
+    Route::get('/consumption/{id?}', 'Responsible\ResponsibleController@consumption')->name('resp_consumption');
+    Route::post('/consumption-by-date', 'Responsible\ResponsibleController@consumptionByDate');
 
 });
 
 Route::prefix('student')->group(function () {
-    Route::get('/', function () {
-        return view('student/index');
-    })->name('stu_index');
+    Route::get('/', 'Student\StudentController@index')->name('stu_index');
     
+    Route::Post('/buy', 'Student\StudentController@buyProduct')->name('stu_consumption');
 
-    Route::get('/extract', function () {
-        return view('student/extract');
-    })->name('stu_extract');
+    Route::get('/extract', 'Student\StudentController@extract')->name('stu_extract');
+    Route::post('/extract-by-date', 'Student\StudentController@extractByDate');
 
     Route::get('/consumption', function () {
         return view('student/consumption');

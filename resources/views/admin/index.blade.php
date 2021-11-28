@@ -16,7 +16,7 @@
   
   <div class="card-product" >
     @if($item->status == 1)
-    <span class="locked" id={{$item->codigo}} onclick="unlockFood('{{$item->codigo}}')">
+    <span class="unlocked" id={{$item->codigo}} onclick="unlockFood('{{$item->codigo}}')">
       <img src="{{ asset('images/unlock.svg') }}" alt="">
     </span>
     @else
@@ -34,7 +34,7 @@
       '{{$item->preco}}'
       )">
       <div class="img-product">
-        <img id="produto-image" src="{{ asset('images/'.$item->foto) }}" alt="Produto">
+        <img id="produto-image" src="{{ asset('images/produtos/'.$item->codigo.'/'.$item->foto) }}" alt="Produto">
       </div>
       <h4>{{$item->nome}}</h4>
       <small>R$ {{number_format($item->preco, 2, ',', ',')}}</small>
@@ -87,7 +87,7 @@
         <h5 class="modal-title" id="exampleModalLabel">Novo produto</h5>
       </div>
       <div class="modal-body">
-        <form action="{{route('new_product')}}" method="POST">
+        <form action="{{route('new_product')}}" method="POST" enctype="multipart/form-data">
           @csrf
           <div class="image-info">
             <div class="info-base">

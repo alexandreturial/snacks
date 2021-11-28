@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Produto;
+use Faker\Provider\Image;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -32,15 +34,41 @@ class ProductController extends Controller
         $precoFromated = str_replace(',','.',end($precoFromated));
         
         try{
-            $produto = Produto::insert([
-                'codigo' => $data['codigo']
-                ,'nome' => $data['nome'] 
-                ,'tipo' => $data['tipo'] 
-                ,'info' => $data['tipo'] == 'bebida' ? $data['fornecedor'] : $data['ingredientes'] 
-                ,'foto' => $data['image']
-                ,'preco' =>  $precoFromated
-                ,'status' => false
-            ]);
+        if($request->hasFile('image')){
+
+            $image = $request->file('image');
+            $nameImage = $image->getClientOriginalName();
+
+            mkdir("images\\produtos\\".$data['codigo'], 0777, true);
+
+            $destinationPath = ("images\\produtos\\".$data['codigo']);
+
+
+            if($image->move($destinationPath, $nameImage)){
+                
+                $produto = Produto::insert([
+                    'codigo' => $data['codigo']
+                    ,'nome' => $data['nome'] 
+                    ,'tipo' => $data['tipo'] 
+                    ,'info' => $data['tipo'] == 'bebida' ? $data['fornecedor'] : $data['ingredientes'] 
+                    ,'foto' => $nameImage
+                    ,'preco' =>  $precoFromated
+                    ,'status' => false
+                ]);
+            }else{
+                return back()->withErrors([
+                    'nome' => 'Dados incorrentos'
+                ])->withInput(\request(['nome'])); 
+            }
+
+
+        }else{
+            return back()->withErrors([
+                'nome' => 'Dados incorrentos'
+            ])->withInput(\request(['nome']));
+        }
+
+           
 
         }catch (Exception $e){
             return back()->withErrors([
@@ -100,12 +128,19 @@ class ProductController extends Controller
        
         $precoFromated = explode("R$ ", $data['preco']);
         $precoFromated = str_replace(',','.',end($precoFromated));
-      
+        
         if($data['image'] != null){
-            $status = Produto::where('codigo', $cod)
-            ->update([
-                "foto" => $data['image']
-            ]);
+            $image = $request->file('image');
+            $nameImage = $image->getClientOriginalName();
+
+            $destinationPath = ("images\\produtos\\".$data['codigo']);
+            
+            if($image->move($destinationPath, $nameImage)){
+                $status = Produto::where('codigo', $data['codigo'])
+                ->update([
+                    "foto" => $nameImage
+                ]);
+            }
         } 
         $status = Produto::where('codigo', $data['codigo'])
         ->update([

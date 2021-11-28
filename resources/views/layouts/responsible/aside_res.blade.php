@@ -9,7 +9,7 @@
     <div class="user-img">
       <img src="{{ asset('images/responsavel.jpg') }}" alt="avatar">
     </div>
-      <small>Felonius Gru</small>
+      <small>{{session()->all()['nome']}}</small>
         <small>Responsável</small>
         </div>
         <div class="user-menu">
@@ -21,6 +21,9 @@
 
           <input type="radio" checked id="alunos" name="menu-option"/>
           <a for="alunos" href="{{ route('resp_student') }}" >Alunos</a>
+
+          <input type="radio" id="logout" name="menu-option"/>
+          <a for="responsavel" href="{{ route('logout') }}">Sair</a>
         </div>
   </aside>
 

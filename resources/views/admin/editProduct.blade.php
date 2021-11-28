@@ -6,7 +6,7 @@
 
   <h2>Altere os dados do produto</h2>
   <div class="modal-body body-edit">
-    <form action="{{Route('update_product')}}" method="POST">
+    <form action="{{Route('update_product')}}" method="POST"  enctype="multipart/form-data">
       @csrf
       <div class="image-info">
         <div class="info-base">
@@ -47,7 +47,7 @@
             <div id="preview" class=" detail-img">
               <div class="img-product">
 
-                <img id="produto-image-new" src="{{asset('images/'.$product->foto) }}" alt="Produto">
+                <img id="produto-image-new"   src="{{ asset('images/produtos/'.$product->codigo.'/'.$product->foto) }}" alt="Produto">
               </div>
               <label for="image">Trocar imagem  </label>
             </div>
